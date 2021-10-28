@@ -18,7 +18,7 @@ namespace QRCodes
             string fileName = textBoxFile.Text;
             
             string result = QREncodeDecode.EncodeTextToQRImage(text, fileName);
-            string decoded = QREncodeDecode.DecodeQRImageToText("c:/temp2/hello.png");
+            string decoded = QREncodeDecode.DecodeQRImageToText(fileName);
             ; // just to be able to set a stop
         }
     }
