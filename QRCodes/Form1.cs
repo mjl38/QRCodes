@@ -14,9 +14,12 @@ namespace QRCodes
         private void button1_Click(object sender, System.EventArgs e)
         {
             //EncodeDecode encodeDecode = new EncodeDecode();
-            string result = QREncodeDecode.EncodeTextToQRImage("hello my name is migueliiiito", "c:/temp2/hello.png");
+            string ls_temp;
+            ls_temp = textBox1.Text;
+            string result = QREncodeDecode.EncodeTextToQRImage(ls_temp, "c:/temp2/hello.png");
+
             result = QREncodeDecode.DecodeQRImageToText("c:/temp2/hello.png");
-            result = "";
+            result = result; // just to be able to set a stop
         }
     }
 }
