@@ -10,7 +10,43 @@ namespace QREncodeDecodeLibrary
     {
         public static string EncodeTextToQRImage(string text, string imageFilename)
         {
+
+        
             BarcodeWriter writer = new BarcodeWriter();
+            System.Drawing.Imaging.ImageFormat imgFormat;
+            string imgExtension = imageFilename.ToLower().Substring(imageFilename.LastIndexOf('.') + 1);
+            
+            switch (imgExtension) {
+                case "gif":
+                    imgFormat = System.Drawing.Imaging.ImageFormat.Gif;
+                    break;
+                case "bmp":
+                    imgFormat = System.Drawing.Imaging.ImageFormat.Bmp;
+                    break;
+                case "jpg":
+                    imgFormat = System.Drawing.Imaging.ImageFormat.Jpeg;
+                    break;
+                case "jpeg":
+                    imgFormat = System.Drawing.Imaging.ImageFormat.Jpeg;
+                    break;
+                case "png":
+                    imgFormat = System.Drawing.Imaging.ImageFormat.Png;
+                    break;
+                case "tiff":
+                    imgFormat = System.Drawing.Imaging.ImageFormat.Tiff;
+                    break;
+                case "wmf":
+                    imgFormat = System.Drawing.Imaging.ImageFormat.Wmf;
+                    break;
+                case "emf":
+                    imgFormat = System.Drawing.Imaging.ImageFormat.Emf;
+                    break;
+                case "ico":
+                    imgFormat = System.Drawing.Imaging.ImageFormat.Icon;
+                    break;
+                default:
+                    return "Image format not supported! (based on the extension of the filename).";
+            }
 
             writer.Format = BarcodeFormat.QR_CODE;
             QrCodeEncodingOptions options = new QrCodeEncodingOptions()
@@ -25,7 +61,7 @@ namespace QREncodeDecodeLibrary
             try
             {
                 Bitmap result = writer.Write(text);
-                result.Save(imageFilename);
+                result.Save(imageFilename, imgFormat);
                 result.Dispose();
             }
             catch (Exception ex)
