@@ -23,16 +23,13 @@ namespace QREncodeDecodeLibrary
                 case "bmp":
                     imgFormat = System.Drawing.Imaging.ImageFormat.Bmp;
                     break;
-                case "jpg":
-                    imgFormat = System.Drawing.Imaging.ImageFormat.Jpeg;
-                    break;
-                case "jpeg":
+                case "jpg": case "jpeg":
                     imgFormat = System.Drawing.Imaging.ImageFormat.Jpeg;
                     break;
                 case "png":
                     imgFormat = System.Drawing.Imaging.ImageFormat.Png;
                     break;
-                case "tiff":
+                case "tiff": case "tif":
                     imgFormat = System.Drawing.Imaging.ImageFormat.Tiff;
                     break;
                 case "wmf":
@@ -76,13 +73,9 @@ namespace QREncodeDecodeLibrary
             Image imageFile = Image.FromFile(imageFilename) as Bitmap;
             BarcodeReader reader = new BarcodeReader {AutoRotate = true, TryInverted = true };
 
-            //// this doesn't seem to be necessary for decoding:
+            //// The following 2 lines don't seem to be necessary for decoding:
             //ZXing.Common.DecodingOptions options = new ZXing.Common.DecodingOptions();
             //options.CharacterSet = "UTF-8";
-
-            // TODO: check if this could facilitate different formats?
-            //options.PossibleFormats
-            //reader.Options = options;
 
             string result = "";
             
