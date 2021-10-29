@@ -13,10 +13,10 @@ namespace QRCodes
 
         private void button1_Click(object sender, System.EventArgs e)
         {
-            //EncodeDecode encodeDecode = new EncodeDecode();
             string text = textBoxText.Text;
             string fileName = textBoxFile.Text;
-            
+
+            // Static, so this is not necessary: EncodeDecode encodeDecode = new EncodeDecode();
             string result = QREncodeDecode.EncodeTextToQRImage(text, fileName);
             string decoded = QREncodeDecode.DecodeQRImageToText(fileName);
             ; // just to be able to set a stop
